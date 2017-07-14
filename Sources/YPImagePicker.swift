@@ -57,39 +57,40 @@ public class YPImagePicker: UINavigationController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         fusuma.showsVideo = showsVideo
+        fusuma.showAvatars = showsCustomSelector
         viewControllers = [fusuma]
         navigationBar.isTranslucent = false
         fusuma.didSelectImage = { [unowned self] pickedImage, isNewPhoto in
             if self.showsFilters {
-//                let filterVC = FiltersVC(image:pickedImage)
-//                filterVC.didSelectImage = { filteredImage, isImageFiltered in
-//                    self.didSelectImage?(filteredImage)
-//                    if isNewPhoto || isImageFiltered {
-//                        PhotoSaver.trySaveImage(filteredImage)
-//                    }
-//                }
-//                
-//                // Use Fade transition instead of default push animation
-//                let transition = CATransition()
-//                transition.duration = 0.3
-//                transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-//                transition.type = kCATransitionFade
-//                self.view.layer.add(transition, forKey: nil)
-//                
-//                self.pushViewController(filterVC, animated: false)
-                
-                let avatrVC = AvatarVC(images:studentAvatars)
-                avatrVC.didSelectImage = { filteredImage, isImageFiltered in
+                let filterVC = FiltersVC(image:pickedImage)
+                filterVC.didSelectImage = { filteredImage, isImageFiltered in
                     self.didSelectImage?(filteredImage)
-                    print(isImageFiltered)
+                    if isNewPhoto || isImageFiltered {
+                        PhotoSaver.trySaveImage(filteredImage)
+                    }
                 }
+                
+                // Use Fade transition instead of default push animation
                 let transition = CATransition()
                 transition.duration = 0.3
                 transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
                 transition.type = kCATransitionFade
                 self.view.layer.add(transition, forKey: nil)
                 
-                self.pushViewController(avatrVC, animated: false)
+                self.pushViewController(filterVC, animated: false)
+                
+//                let avatrVC = AvatarVC(images:studentAvatars)
+//                avatrVC.didSelectImage = { filteredImage, isImageFiltered in
+//                    self.didSelectImage?(filteredImage)
+//                    print(isImageFiltered)
+//                }
+//                let transition = CATransition()
+//                transition.duration = 0.3
+//                transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+//                transition.type = kCATransitionFade
+//                self.view.layer.add(transition, forKey: nil)
+//                
+//                self.pushViewController(avatrVC, animated: false)
 
                 
             } else {

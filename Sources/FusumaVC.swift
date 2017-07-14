@@ -38,6 +38,7 @@ public class FusumaVC: FSBottomPager, PagerDelegate {
         case library
         case camera
         case video
+        case avatar
     }
     
     let albumVC = FSAlbumVC()
@@ -45,7 +46,7 @@ public class FusumaVC: FSBottomPager, PagerDelegate {
         return FSCameraVC(shouldUseFrontCamera: self.usesFrontCamera)
     }()
     let videoVC = FSVideoVC()
-    
+    let avatarVC = AvatarVC(images: studentAvatars)
     var mode = Mode.camera
     
     var capturedImage: UIImage?
@@ -76,6 +77,8 @@ public class FusumaVC: FSBottomPager, PagerDelegate {
         if controllers.isEmpty {
             if showsVideo {
                 controllers = [albumVC, cameraVC, videoVC]
+            }else if showAvatars {
+                controllers = [albumVC, cameraVC, avatarVC]
             } else {
                 controllers = [albumVC, cameraVC]
             }
@@ -112,6 +115,8 @@ public class FusumaVC: FSBottomPager, PagerDelegate {
             changedMode = false
         case .video where vc == videoVC:
             changedMode = false
+        case .avatar where vc == videoVC:
+            changedMode = false
         default:()
         }
         
@@ -124,6 +129,8 @@ public class FusumaVC: FSBottomPager, PagerDelegate {
                 mode = .camera
             } else if vc == videoVC {
                 mode = .video
+            }else if vc == avatarVC {
+                mode = .avatar
             }
             
             updateUI()
@@ -150,6 +157,8 @@ public class FusumaVC: FSBottomPager, PagerDelegate {
             self.cameraVC.startCamera()
         case .video:
             self.videoVC.startCamera()
+        case .avatar:
+            break
         }
     }
     
@@ -179,6 +188,13 @@ public class FusumaVC: FSBottomPager, PagerDelegate {
         case .video:
             title = videoVC.title
             navigationItem.rightBarButtonItem = nil
+        case .avatar:
+            title = videoVC.title
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: fsLocalized("YPFusumaNext"),
+                                                                style: .done,
+                                                                target: self,
+                                                                action: #selector(done))
+             navigationItem.rightBarButtonItem?.isEnabled = true
         }
     }
     
