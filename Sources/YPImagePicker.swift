@@ -61,7 +61,12 @@ public class YPImagePicker: UINavigationController {
         viewControllers = [fusuma]
         navigationBar.isTranslucent = false
         fusuma.didSelectImage = { [unowned self] pickedImage, isNewPhoto in
-            if self.showsFilters {
+            
+            let mode = self.fusuma.mode
+            
+            
+            
+            if self.showsFilters && mode != .avatar{
                 let filterVC = FiltersVC(image:pickedImage)
                 filterVC.didSelectImage = { filteredImage, isImageFiltered in
                     self.didSelectImage?(filteredImage)
@@ -76,22 +81,7 @@ public class YPImagePicker: UINavigationController {
                 transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
                 transition.type = kCATransitionFade
                 self.view.layer.add(transition, forKey: nil)
-                
                 self.pushViewController(filterVC, animated: false)
-                
-//                let avatrVC = AvatarVC(images:studentAvatars)
-//                avatrVC.didSelectImage = { filteredImage, isImageFiltered in
-//                    self.didSelectImage?(filteredImage)
-//                    print(isImageFiltered)
-//                }
-//                let transition = CATransition()
-//                transition.duration = 0.3
-//                transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-//                transition.type = kCATransitionFade
-//                self.view.layer.add(transition, forKey: nil)
-//                
-//                self.pushViewController(avatrVC, animated: false)
-
                 
             } else {
                 self.didSelectImage?(pickedImage)

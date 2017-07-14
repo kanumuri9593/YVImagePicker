@@ -74,6 +74,10 @@ public class FusumaVC: FSBottomPager, PagerDelegate {
         }
         delegate = self
         
+        avatarVC.didSelectImage = { [unowned self] img,nameID in
+            self.didSelectImage?(img, true)
+        }
+
         if controllers.isEmpty {
             if showsVideo {
                 controllers = [albumVC, cameraVC, videoVC]
@@ -189,9 +193,8 @@ public class FusumaVC: FSBottomPager, PagerDelegate {
             title = videoVC.title
             navigationItem.rightBarButtonItem = nil
         case .avatar:
-            title = videoVC.title
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: fsLocalized("YPFusumaNext"),
-                                                                style: .done,
+            title = avatarVC.title
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
                                                                 target: self,
                                                                 action: #selector(done))
              navigationItem.rightBarButtonItem?.isEnabled = true
@@ -205,13 +208,23 @@ public class FusumaVC: FSBottomPager, PagerDelegate {
     }
     
     func done() {
-        if mode == .library {
+        
+        switch mode {
+        case .library:
             albumVC.selectedMedia(photo: { img in
                 self.didSelectImage?(img, false)
             }, video: { videoURL in
                 self.didSelectVideo?(videoURL)
             })
+        case .avatar:
+            avatarVC.done()
+            navigationController?.dismiss(animated: true, completion: nil)
+
+           print("done clciked")
+        default:
+            return
         }
+        
     }
     
     func stopAll() {

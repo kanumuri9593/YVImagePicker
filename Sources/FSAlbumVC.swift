@@ -110,7 +110,7 @@ PHPhotoLibraryChangeObserver, UIGestureRecognizerDelegate {
             return
         }
         
-        let panGesture      = UIPanGestureRecognizer(target: self, action: #selector(panned(_:)))
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panned(_:)))
         panGesture.delegate = self
         v.addGestureRecognizer(panGesture)
         

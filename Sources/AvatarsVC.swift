@@ -52,14 +52,12 @@ class AvatarVC: UIViewController {
        v.collectionView.selectItem(at: IndexPath(row: 0, section: 0),
                                     animated: false,
                                     scrollPosition: UICollectionViewScrollPosition.bottom)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
-                                                            target: self,
-                                                            action: #selector(done))
+        
     }
     
     func done() {
         didSelectImage?(v.imageView.image!, SelectedAvatarID)
-        navigationController?.dismiss(animated: true, completion: nil)
+    
     }
 }
 
