@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Pods-Test.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Stevia.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>SteviaLayout.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>14650BDEBDF9D56C0DA9FE740EF4832F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7494136CDCBFC824034C122BC94149D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>98D7AF715B621315FEDD2C5AF9C7CDBE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EFDDFF0F51408166A8C5C3B1B61ACB90</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

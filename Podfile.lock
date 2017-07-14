@@ -1,0 +1,12 @@
+PODS:
+  - SteviaLayout (3.1.2)
+
+DEPENDENCIES:
+  - SteviaLayout
+
+SPEC CHECKSUMS:
+  SteviaLayout: 8b68904fc1e1897ba2451d795b0d88a7c6973b60
+
+PODFILE CHECKSUM: 99d33e1faf1db71728caef1adab2840cc8d0765e
+
+COCOAPODS: 1.2.0
