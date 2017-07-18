@@ -192,7 +192,7 @@ public class FSVideoVC: UIViewController {
         refreshFlashButton()
     }
     
-    func flashImage(forAVCaptureFlashMode: AVCaptureFlashMode) -> UIImage {
+    func flashImage(forAVCaptureFlashMode: AVCaptureTorchMode) -> UIImage {
         switch forAVCaptureFlashMode {
         case .on: return flashOnImage!
         case .off: return flashOffImage!
@@ -266,7 +266,7 @@ extension FSVideoVC {
     
     func refreshFlashButton() {
         if let device = device {
-            v.flashButton.setImage(flashImage(forAVCaptureFlashMode:device.flashMode), for: .normal)
+            v.flashButton.setImage(flashImage(forAVCaptureFlashMode:device.torchMode), for: .normal)
         }
     }
 }

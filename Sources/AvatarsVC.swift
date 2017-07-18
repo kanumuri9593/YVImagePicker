@@ -73,9 +73,9 @@ extension AvatarVC: UICollectionViewDataSource {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCell",
                                                          for: indexPath) as? FilterCollectionViewCell {
             cell.name.text = "\(indexPath.row)"
-            if let img = Avatars[indexPath.row] as? UIImage{
+             let img = Avatars[indexPath.row]
                 cell.imageView.image = img
-            }
+            
             return cell
         }
         return UICollectionViewCell()

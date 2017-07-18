@@ -23,6 +23,7 @@ func imageFromBundle(_ named: String) -> UIImage {
 }
 
 func deviceForPosition(_ p: AVCaptureDevicePosition) -> AVCaptureDevice? {
+    
     for device in AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo) {
         if let d = device as? AVCaptureDevice, d.position == p {
             return d
@@ -36,10 +37,10 @@ extension AVCaptureDevice {
         guard hasFlash else { return }
         do {
             try lockForConfiguration()
-            if flashMode == .off {
-                flashMode = .on
-            } else if flashMode == .on {
-                flashMode = .off
+            if torchMode == .off {
+                torchMode = .on
+            } else if torchMode == .on {
+                torchMode = .off
             }
             unlockForConfiguration()
         } catch _ { }
@@ -49,11 +50,13 @@ extension AVCaptureDevice {
         guard hasFlash else { return }
         do {
             try lockForConfiguration()
-            flashMode = .off
+            torchMode = .off
             unlockForConfiguration()
         } catch _ { }
     }
 }
+
+
 
 func configureFocusView(_ v: UIView) {
     v.alpha = 0.0

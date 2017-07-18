@@ -36,7 +36,5 @@ class ViewController: UIViewController {
     func StudentSelected (_ sender:AnyObject){
       present(picker, animated: true, completion: nil)
     }
-
-
 }
 
