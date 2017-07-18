@@ -28,7 +28,7 @@ public class YPImagePicker: UINavigationController {
     public var showsVideo = false
     public var showsCustomSelector = false
     public var showsFilters = true
-    
+    public var EnableVideoTrim = true
     
     public var onlySquareImages = false {
         didSet {
@@ -44,7 +44,6 @@ public class YPImagePicker: UINavigationController {
     
     
     public var didSelectImage: ((UIImage) -> Void)?
-    public var didSelectAvatar: ((UIImage) -> Void)?
     public var didSelectVideo: ((Data, UIImage) -> Void)?
     
     private let fusuma = FusumaVC()
@@ -92,35 +91,42 @@ public class YPImagePicker: UINavigationController {
         }
         
         fusuma.didSelectVideo = { [unowned self] videoURL in
-            let thumb = thunbmailFromVideoPath(videoURL)
-            // Compress Video to 640x480 format.
-            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-            if let firstPath = paths.first {
-                let path = firstPath + "/\(Int(Date().timeIntervalSince1970))temporary.mov"
-                let uploadURL = URL(fileURLWithPath: path)
-                let asset = AVURLAsset(url: videoURL)
-                let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPreset640x480)
-                exportSession?.outputURL = uploadURL
-                exportSession?.outputFileType = AVFileTypeQuickTimeMovie
-                exportSession?.shouldOptimizeForNetworkUse = true //USEFUL?
-                exportSession?.exportAsynchronously {
-                    switch exportSession!.status {
-                    case .completed:
-                        if let videoData = FileManager.default.contents(atPath: uploadURL.path) {
-                            DispatchQueue.main.async {
-                                self.didSelectVideo?(videoData, thumb)
+            
+            if self.EnableVideoTrim {
+            
+            }else {
+                let thumb = thunbmailFromVideoPath(videoURL)
+                // Compress Video to 640x480 format.
+                let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+                if let firstPath = paths.first {
+                    let path = firstPath + "/\(Int(Date().timeIntervalSince1970))temporary.mov"
+                    let uploadURL = URL(fileURLWithPath: path)
+                    let asset = AVURLAsset(url: videoURL)
+                    let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPreset640x480)
+                    exportSession?.outputURL = uploadURL
+                    exportSession?.outputFileType = AVFileTypeQuickTimeMovie
+                    exportSession?.shouldOptimizeForNetworkUse = true //USEFUL?
+                    exportSession?.exportAsynchronously {
+                        switch exportSession!.status {
+                        case .completed:
+                            if let videoData = FileManager.default.contents(atPath: uploadURL.path) {
+                                DispatchQueue.main.async {
+                                    self.didSelectVideo?(videoData, thumb)
+                                }
                             }
-                        }
-                    default:
-                        // Fall back to default video size:
-                        if let videoData = FileManager.default.contents(atPath: videoURL.path) {
-                            DispatchQueue.main.async {
-                                self.didSelectVideo?(videoData, thumb)
+                        default:
+                            // Fall back to default video size:
+                            if let videoData = FileManager.default.contents(atPath: videoURL.path) {
+                                DispatchQueue.main.async {
+                                    self.didSelectVideo?(videoData, thumb)
+                                }
                             }
                         }
                     }
                 }
             }
+            
+            
         }
         //force fusuma load view
         _ = fusuma.view

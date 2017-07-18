@@ -13,14 +13,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var avatar: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        picker.showsCustomSelector = true
+        picker.showsVideo = true
          let gestureRecognizerOne = UITapGestureRecognizer(target: self, action: #selector(StudentSelected))
         avatar.addGestureRecognizer(gestureRecognizerOne)
         
         picker.didSelectImage = { img in
             self.avatar.image = img
         }
-        picker.didSelectVideo = { videoData in
+        picker.didSelectVideo = { (videoData, img) in
+            
+            self.avatar.image = img
             // video picked
         }
 

@@ -119,7 +119,7 @@ public class FusumaVC: FSBottomPager, PagerDelegate {
             changedMode = false
         case .video where vc == videoVC:
             changedMode = false
-        case .avatar where vc == videoVC:
+        case .avatar where vc == avatarVC:
             changedMode = false
         default:()
         }

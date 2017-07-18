@@ -38,6 +38,7 @@
 		F26FB0E11F1902A200D17889 /* ImageCropViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26FB0CA1F1902A200D17889 /* ImageCropViewContainer.swift */; };
 		F26FB0E21F1902A200D17889 /* PhotoSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26FB0CB1F1902A200D17889 /* PhotoSaver.swift */; };
 		F26FB0E31F1902A200D17889 /* YPImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26FB0CC1F1902A200D17889 /* YPImagePicker.swift */; };
+		F2A0A0E61F1E7A6200C2A3AA /* YVVideoTrimVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0E51F1E7A6200C2A3AA /* YVVideoTrimVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		F26FB0CA1F1902A200D17889 /* ImageCropViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropViewContainer.swift; sourceTree = "<group>"; };
 		F26FB0CB1F1902A200D17889 /* PhotoSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSaver.swift; sourceTree = "<group>"; };
 		F26FB0CC1F1902A200D17889 /* YPImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YPImagePicker.swift; sourceTree = "<group>"; };
+		F2A0A0E51F1E7A6200C2A3AA /* YVVideoTrimVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YVVideoTrimVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				F26FB0C81F1902A200D17889 /* FSVideoVC.swift */,
+				F2A0A0E51F1E7A6200C2A3AA /* YVVideoTrimVC.swift */,
 			);
 			name = Video;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F26FB0E31F1902A200D17889 /* YPImagePicker.swift in Sources */,
+				F2A0A0E61F1E7A6200C2A3AA /* YVVideoTrimVC.swift in Sources */,
 				F26FB0E11F1902A200D17889 /* ImageCropViewContainer.swift in Sources */,
 				F26FB0D81F1902A200D17889 /* FSBottomPager.swift in Sources */,
 				F26FB0D21F1902A200D17889 /* FiltersVC.swift in Sources */,
