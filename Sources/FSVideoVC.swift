@@ -83,13 +83,28 @@ public class FSVideoVC: UIViewController {
         }
         
         // Add audio recording
-        for device in AVCaptureDevice.devices(withMediaType:AVMediaTypeAudio) {
-            if let device = device as? AVCaptureDevice, let audioInput = try? AVCaptureDeviceInput(device: device) {
+        
+        
+        if #available(iOS 10, *) {
+            let d:AVCaptureDevice = .defaultDevice(withDeviceType: .builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position:.back)
+            if  let audioInput = try? AVCaptureDeviceInput(device: d) {
                 if session.canAddInput(audioInput) {
                     session.addInput(audioInput)
                 }
             }
+
+        }else{
+            for device in AVCaptureDevice.devices(withMediaType:AVMediaTypeAudio) {
+                if let device = device as? AVCaptureDevice, let audioInput = try? AVCaptureDeviceInput(device: device) {
+                    if session.canAddInput(audioInput) {
+                        session.addInput(audioInput)
+                    }
+                }
+            }
         }
+        
+        
+        
         
         let totalSeconds = 30.0 //Total Seconds of capture time
         let timeScale: Int32 = 30 //FPS
@@ -173,13 +188,27 @@ public class FSVideoVC: UIViewController {
             }
             
             // Re Add audio recording
-            for device in AVCaptureDevice.devices(withMediaType:AVMediaTypeAudio) {
-                if let device = device as? AVCaptureDevice, let audioInput = try? AVCaptureDeviceInput(device: device) {
+            
+            
+            
+            if #available(iOS 10, *) {
+                let d:AVCaptureDevice = .defaultDevice(withDeviceType: .builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position:.back)
+                if   let audioInput = try? AVCaptureDeviceInput(device: d) {
                     if self.session.canAddInput(audioInput) {
                         self.session.addInput(audioInput)
                     }
                 }
+                
+            }else{
+                for device in AVCaptureDevice.devices(withMediaType:AVMediaTypeAudio) {
+                    if let device = device as? AVCaptureDevice, let audioInput = try? AVCaptureDeviceInput(device: device) {
+                        if self.session.canAddInput(audioInput) {
+                            self.session.addInput(audioInput)
+                        }
+                    }
+                }
             }
+            
             self.session.commitConfiguration()
             DispatchQueue.main.async {
                 self.refreshFlashButton()

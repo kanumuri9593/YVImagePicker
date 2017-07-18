@@ -23,12 +23,16 @@ func imageFromBundle(_ named: String) -> UIImage {
 }
 
 func deviceForPosition(_ p: AVCaptureDevicePosition) -> AVCaptureDevice? {
-    
-    for device in AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo) {
-        if let d = device as? AVCaptureDevice, d.position == p {
-            return d
+    if #available(iOS 10, *) {
+        return .defaultDevice(withDeviceType: .builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position:p)
+    }else{
+        for device in AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo) {
+            if let d = device as? AVCaptureDevice, d.position == p {
+                return d
+            }
         }
     }
+    
     return nil
 }
 

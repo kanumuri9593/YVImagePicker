@@ -145,7 +145,8 @@ public class FSCameraVC: UIViewController, UIGestureRecognizerDelegate {
             
             self.imageOutput.captureStillImageAsynchronously(from: videoConnection) { buffer, _ in
                 self.session.stopRunning()
-                let data = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
+                //AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer!, previewPhotoSampleBuffer: nil)
+                let data = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer!, previewPhotoSampleBuffer: nil)// AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
                 if let image = UIImage(data: data!) {
                     
                     // Image size
