@@ -12,7 +12,7 @@ import AVFoundation
 
 class YVVideoTrimVC:UIViewController, ABVideoRangeSliderDelegate{
     
-    
+    public var didTrimVideo:((URL, UIImage) -> Void)?
     let videoRangeSlider:ABVideoRangeSlider = {
     let abvc = ABVideoRangeSlider()
         return abvc
@@ -32,6 +32,7 @@ class YVVideoTrimVC:UIViewController, ABVideoRangeSliderDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         view.backgroundColor = .white
         view.addSubview(videoRangeSlider)
         view.addSubview(ThumbImage)
@@ -101,7 +102,7 @@ class YVVideoTrimVC:UIViewController, ABVideoRangeSliderDelegate{
         exportSession.exportAsynchronously{
             switch exportSession.status {
             case .completed:
-                print("exported at \(outputURL)")
+               self.didTrimVideo?(outputURL, self.ThumbImage.image!)
             case .failed:
                 print("failed \(exportSession.error)")
                 

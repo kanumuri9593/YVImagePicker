@@ -92,10 +92,15 @@ public class YPImagePicker: UINavigationController {
         
         fusuma.didSelectVideo = { [unowned self] videoURL in
             
-            if self.EnableVideoTrim {
+            if self.EnableVideoTrim && ABVideoHelper.videoDuration(videoURL: videoURL) > 60 {
                 
-                 let video = YVVideoTrimVC.loadFromNib()
                 let v = YVVideoTrimVC(VideoURL: videoURL)
+                
+                v.didTrimVideo = { [unowned self] (trimeedVideoUrl , thumImg) in
+                    
+                self.CompressVideo(VideoUrl: trimeedVideoUrl, thumbImg: thumImg)
+                    
+                }
                 
                 // Use Fade transition instead of default push animation
                 let transition = CATransition()
@@ -107,35 +112,8 @@ public class YPImagePicker: UINavigationController {
                 self.pushViewController(v, animated: false)
             
             }else {
-                let thumb = thunbmailFromVideoPath(videoURL)
-                // Compress Video to 640x480 format.
-                let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-                if let firstPath = paths.first {
-                    let path = firstPath + "/\(Int(Date().timeIntervalSince1970))temporary.mov"
-                    let uploadURL = URL(fileURLWithPath: path)
-                    let asset = AVURLAsset(url: videoURL)
-                    let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPreset640x480)
-                    exportSession?.outputURL = uploadURL
-                    exportSession?.outputFileType = AVFileTypeQuickTimeMovie
-                    exportSession?.shouldOptimizeForNetworkUse = true //USEFUL?
-                    exportSession?.exportAsynchronously {
-                        switch exportSession!.status {
-                        case .completed:
-                            if let videoData = FileManager.default.contents(atPath: uploadURL.path) {
-                                DispatchQueue.main.async {
-                                    self.didSelectVideo?(videoData, thumb)
-                                }
-                            }
-                        default:
-                            // Fall back to default video size:
-                            if let videoData = FileManager.default.contents(atPath: videoURL.path) {
-                                DispatchQueue.main.async {
-                                    self.didSelectVideo?(videoData, thumb)
-                                }
-                            }
-                        }
-                    }
-                }
+              let thumb = thunbmailFromVideoPath(videoURL)
+                self.CompressVideo(VideoUrl: videoURL, thumbImg: thumb)
             }
             
             
@@ -143,7 +121,42 @@ public class YPImagePicker: UINavigationController {
         //force fusuma load view
         _ = fusuma.view
     }
+    
+    func CompressVideo(VideoUrl:URL, thumbImg:UIImage) {
+        
+        // Compress Video to 640x480 format.
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        if let firstPath = paths.first {
+            let path = firstPath + "/\(Int(Date().timeIntervalSince1970))temporary.mov"
+            let uploadURL = URL(fileURLWithPath: path)
+            let asset = AVURLAsset(url: VideoUrl)
+            let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPreset640x480)
+            exportSession?.outputURL = uploadURL
+            exportSession?.outputFileType = AVFileTypeQuickTimeMovie
+            exportSession?.shouldOptimizeForNetworkUse = true //USEFUL?
+            exportSession?.exportAsynchronously {
+                switch exportSession!.status {
+                case .completed:
+                    if let videoData = FileManager.default.contents(atPath: uploadURL.path) {
+                        DispatchQueue.main.async {
+                            
+                            self.didSelectVideo?(videoData, thumbImg)
+                        }
+                    }
+                default:
+                    // Fall back to default video size:
+                    if let videoData = FileManager.default.contents(atPath: VideoUrl.path) {
+                        DispatchQueue.main.async {
+                            self.didSelectVideo?(videoData, thumbImg)
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+
+
 
 func thunbmailFromVideoPath(_ path: URL) -> UIImage {
     let asset = AVURLAsset(url: path, options: nil)

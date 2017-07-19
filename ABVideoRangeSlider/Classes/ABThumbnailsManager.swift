@@ -50,7 +50,7 @@ class ABThumbnailsManager: NSObject {
     private func thumbnailCount(inView: UIView) -> Int{
         print(inView.frame.size.width,inView.frame.size.height)
          let num = Double(inView.frame.size.width ) / Double(inView.frame.size.height)
-        let n = num > 0 ? num : Double(UIScreen.main.bounds.width - 30) / Double(80)
+        let n = num > 0 ? num : Double(UIScreen.main.bounds.width - 30) / Double(40)
         return Int(ceil(n))
     }
     
