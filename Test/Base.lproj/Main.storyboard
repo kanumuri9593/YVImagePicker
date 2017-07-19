@@ -4,7 +4,9 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,6 +36,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+        </scene>
+        <!--Video TrimmerVC-->
+        <scene sceneID="I0q-wF-rfY">
+            <objects>
+                <viewController id="qKF-Ag-90X" customClass="VideoTrimmerVC" customModule="Test" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jRZ-dL-Cty"/>
+                        <viewControllerLayoutGuide type="bottom" id="EPz-jG-5QO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CXr-5h-fOV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eKj-0h-mGF" customClass="ABVideoRangeSlider" customModule="ABVideoRangeSlider">
+                                <rect key="frame" x="16" y="521" width="343" height="50"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="12E-yl-MkJ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eKj-0h-mGF" firstAttribute="leading" secondItem="CXr-5h-fOV" secondAttribute="leadingMargin" id="3jA-jI-pWJ"/>
+                            <constraint firstItem="EPz-jG-5QO" firstAttribute="top" secondItem="eKj-0h-mGF" secondAttribute="bottom" constant="96" id="51X-xN-4F4"/>
+                            <constraint firstItem="eKj-0h-mGF" firstAttribute="trailing" secondItem="CXr-5h-fOV" secondAttribute="trailingMargin" id="E3G-3y-1VX"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MT0-HP-4Kw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.2" y="95.802098950524751"/>
         </scene>
     </scenes>
     <resources>

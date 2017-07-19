@@ -93,6 +93,18 @@ public class YPImagePicker: UINavigationController {
         fusuma.didSelectVideo = { [unowned self] videoURL in
             
             if self.EnableVideoTrim {
+                
+                 let video = YVVideoTrimVC.loadFromNib()
+                let v = YVVideoTrimVC(VideoURL: videoURL)
+                
+                // Use Fade transition instead of default push animation
+                let transition = CATransition()
+                transition.duration = 0.3
+                transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+                transition.type = kCATransitionFade
+                self.view.layer.add(transition, forKey: nil)
+                //let vc = VideoTrimmerVC()
+                self.pushViewController(v, animated: false)
             
             }else {
                 let thumb = thunbmailFromVideoPath(videoURL)
@@ -147,3 +159,10 @@ func thunbmailFromVideoPath(_ path: URL) -> UIImage {
     } catch { }
     return UIImage()
 }
+
+extension UIViewController {
+    class func loadFromNib<T: UIViewController>() -> T {
+        return T(nibName: String(describing: self), bundle: nil)
+    }
+}
+

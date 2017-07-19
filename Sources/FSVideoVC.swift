@@ -106,7 +106,7 @@ public class FSVideoVC: UIViewController {
         
         
         
-        let totalSeconds = 30.0 //Total Seconds of capture time
+        let totalSeconds = 120.0 //Total Seconds of capture time
         let timeScale: Int32 = 30 //FPS
         let maxDuration = CMTimeMakeWithSeconds(totalSeconds, timeScale)
         videoOutput.maxRecordedDuration = maxDuration
@@ -247,7 +247,7 @@ extension FSVideoVC: AVCaptureFileOutputRecordingDelegate {
     func tick() {
         let timeElapsed = Date().timeIntervalSince(dateVideoStarted)
         v.timeElapsedLabel.text = formattedStrigFrom(timeElapsed)
-        let p: Float = Float(timeElapsed) / Float(30)
+        let p: Float = Float(timeElapsed) / Float(120)
         DispatchQueue.main.async {
             self.v.progressBar.progress = p
             UIView.animate(withDuration: 1, animations: {
