@@ -26,7 +26,8 @@ class YVVideoTrimVC:UIViewController, ABVideoRangeSliderDelegate{
     }()
     
     var ThumbPosition:Float64 =  2.0
-    
+    var TrimStartTime:Float64 = 0.0
+    var TrimEndTime:Float64 = 55.0
     var VideoUrl:URL!
     
     
@@ -40,8 +41,16 @@ class YVVideoTrimVC:UIViewController, ABVideoRangeSliderDelegate{
         ThumbImage.anchor(self.view.topAnchor, left: nil, bottom: nil, right: nil, topConstant: 50, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 250, heightConstant: 250)
         ThumbImage.anchorCenterXToSuperview()
         SetThumbImage(Url: VideoUrl, time: ThumbPosition)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
+                                                            target: self,
+                                                            action: #selector(done))
     }
+    
+    func done() {
+        cropVideo(sourceURL1: VideoUrl, startTime: Float(TrimStartTime), endTime: Float(TrimEndTime))
         
+    }
+    
     required init(VideoURL: URL) {
         self.VideoUrl = VideoURL
         videoRangeSlider.setVideoURL(videoURL: VideoURL)
@@ -64,8 +73,8 @@ class YVVideoTrimVC:UIViewController, ABVideoRangeSliderDelegate{
     
 
     
-    func cropVideo(sourceURL1: NSURL, statTime:Float, endTime:Float)
-    {
+    func cropVideo(sourceURL1: URL, startTime:Float, endTime:Float){
+    
         let manager = FileManager.default
         
         guard let documentDirectory = try? manager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) else {return}
@@ -74,7 +83,7 @@ class YVVideoTrimVC:UIViewController, ABVideoRangeSliderDelegate{
         let length = Float(asset.duration.value) / Float(asset.duration.timescale)
         print("video length: \(length) seconds")
         
-        let start = statTime
+        let start = startTime
         let end = endTime
         
         var outputURL = documentDirectory.appendingPathComponent("output")
@@ -104,13 +113,15 @@ class YVVideoTrimVC:UIViewController, ABVideoRangeSliderDelegate{
             case .completed:
                self.didTrimVideo?(outputURL, self.ThumbImage.image!)
             case .failed:
+                self.didTrimVideo?(sourceURL1, self.ThumbImage.image!)
                 print("failed \(exportSession.error)")
-                
             case .cancelled:
+                self.didTrimVideo?(sourceURL1, self.ThumbImage.image!)
                 print("cancelled \(exportSession.error)")
                 
             default: break
             }
+            self.navigationController?.dismiss(animated: true, completion: nil)
         }
         
     }
@@ -127,6 +138,8 @@ class YVVideoTrimVC:UIViewController, ABVideoRangeSliderDelegate{
     // MARK: ABVideoRangeSlider Delegate - Returns time in seconds
     
     func didChangeValue(videoRangeSlider: ABVideoRangeSlider, startTime: Float64, endTime: Float64) {
+        TrimStartTime = startTime
+        TrimEndTime = endTime
     }
     
     func indicatorDidChangePosition(videoRangeSlider: ABVideoRangeSlider, position: Float64) {

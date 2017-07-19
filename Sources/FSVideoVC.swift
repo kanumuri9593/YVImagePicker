@@ -270,6 +270,9 @@ extension FSVideoVC: AVCaptureFileOutputRecordingDelegate {
                         error: Error!) {
         print("finished recording to: \(outputFileURL)")
         didCaptureVideo?(outputFileURL)
+        if ABVideoHelper.videoDuration(videoURL: outputFileURL) <= 60 {
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        }
         resetVisualState()
         timer.invalidate()
     }
