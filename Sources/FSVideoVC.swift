@@ -285,6 +285,59 @@ extension FSVideoVC: AVCaptureFileOutputRecordingDelegate {
 
 extension FSVideoVC {
     
+    func suqareCropVideo(inputURL: NSURL, completion: @escaping (_ outputURL : NSURL?) -> ())
+    {
+        let videoAsset: AVAsset = AVAsset( url: inputURL as URL )
+        let clipVideoTrack = videoAsset.tracks( withMediaType: AVMediaTypeVideo ).first! as AVAssetTrack
+        
+        let composition = AVMutableComposition()
+        composition.addMutableTrack(withMediaType: AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID())
+        
+        let videoComposition = AVMutableVideoComposition()
+        videoComposition.renderSize = CGSize( width: clipVideoTrack.naturalSize.height, height: clipVideoTrack.naturalSize.height )
+        videoComposition.frameDuration = CMTimeMake(1, 30)
+        
+        let transformer = AVMutableVideoCompositionLayerInstruction(assetTrack: clipVideoTrack)
+        
+        let instruction = AVMutableVideoCompositionInstruction()
+        instruction.timeRange = CMTimeRangeMake(kCMTimeZero, CMTimeMakeWithSeconds(60, 30))
+        
+        
+        let transform1: CGAffineTransform = CGAffineTransform(translationX: clipVideoTrack.naturalSize.height, y: (clipVideoTrack.naturalSize.width - clipVideoTrack.naturalSize.height) / 2)
+        let transform2 = transform1.rotated(by: .pi/2)
+        let finalTransform = transform2
+        
+        
+        transformer.setTransform(finalTransform, at: kCMTimeZero)
+        
+        instruction.layerInstructions = [transformer]
+        videoComposition.instructions = [instruction]
+        
+        // Export
+        let exportSession = AVAssetExportSession(asset: videoAsset, presetName: AVAssetExportPresetHighestQuality)!
+        print ("random id = \(NSUUID().uuidString)")
+        
+        let croppedOutputFileUrl = URL( fileURLWithPath:  NSUUID().uuidString ) // CREATE RANDOM FILE NAME HERE
+        exportSession.outputURL = croppedOutputFileUrl
+        exportSession.outputFileType = AVFileTypeQuickTimeMovie
+        exportSession.videoComposition = videoComposition
+        exportSession.exportAsynchronously() { handler -> Void in
+            if exportSession.status == .completed {
+                print("Export complete")
+                DispatchQueue.main.async(execute: {
+                    completion(croppedOutputFileUrl as NSURL)
+                })
+                return
+            } else if exportSession.status == .failed {
+                print("Export failed - \(String(describing: exportSession.error))")
+            }
+            
+            completion(nil)
+            return
+        }
+    }
+    
+    
     func focus(_ recognizer: UITapGestureRecognizer) {
         let point = recognizer.location(in: v.previewViewContainer)
         let viewsize = v.previewViewContainer.bounds.size

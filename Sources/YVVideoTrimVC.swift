@@ -15,14 +15,23 @@ class YVVideoTrimVC:UIViewController, ABVideoRangeSliderDelegate{
     public var didTrimVideo:((URL, UIImage) -> Void)?
     let videoRangeSlider:ABVideoRangeSlider = {
     let abvc = ABVideoRangeSlider()
+        abvc.backgroundColor = .black
         return abvc
         
     }()
     
     let ThumbImage:UIImageView = {
         let Img = UIImageView()
+        Img.contentMode = .scaleAspectFit
        Img.layer.cornerRadius = 20
        return Img
+    }()
+    
+    let WhiteView:UIView = {
+    
+    let view = UIView()
+        view.backgroundColor = .white
+        return view
     }()
     
     var ThumbPosition:Float64 =  2.0
@@ -37,7 +46,9 @@ class YVVideoTrimVC:UIViewController, ABVideoRangeSliderDelegate{
         view.backgroundColor = .white
         view.addSubview(videoRangeSlider)
         view.addSubview(ThumbImage)
-        videoRangeSlider.anchor(nil, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor, topConstant: 0, leftConstant: 15, bottomConstant: 80, rightConstant: 15, widthConstant: 0, heightConstant: 80)
+        view.addSubview(WhiteView)
+        videoRangeSlider.anchor(nil, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.WhiteView.leftAnchor, topConstant: 0, leftConstant: 15, bottomConstant: 80, rightConstant: 0                                         , widthConstant: 0, heightConstant: 80)
+        WhiteView.anchor(nil, left: videoRangeSlider.rightAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 80, rightConstant: 0, widthConstant: 15, heightConstant: 80)
         ThumbImage.anchor(self.view.topAnchor, left: nil, bottom: nil, right: nil, topConstant: 50, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 250, heightConstant: 250)
         ThumbImage.anchorCenterXToSuperview()
         SetThumbImage(Url: VideoUrl, time: ThumbPosition)

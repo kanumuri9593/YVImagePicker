@@ -11,7 +11,7 @@ import Photos
 
 public class PhotoSaver {
     
-    public static var albumName = "DefaultYPImagePickerAlbumName"
+    public static var albumName = "Yeshu"
     
     class func trySaveImage(_ image: UIImage) {
      

@@ -39,7 +39,7 @@ public class ABVideoRangeSlider: UIView, UIGestureRecognizerDelegate {
     var duration: Float64   = 0.0
     var videoURL            = URL(fileURLWithPath: "")
 
-    var progressPercentage: CGFloat = 5         // Represented in percentage
+    var progressPercentage: CGFloat = 25         // Represented in percentage
     var startPercentage: CGFloat    = 0         // Represented in percentage
     var endPercentage: CGFloat      = 100       // Represented in percentage
 

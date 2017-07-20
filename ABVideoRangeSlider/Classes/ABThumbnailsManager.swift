@@ -13,27 +13,29 @@ class ABThumbnailsManager: NSObject {
     
     var thumbnailViews = [UIImageView]()
 
-    private func addImagesToView(images: [UIImage], view: UIView){
+    private func addImagesToView(images: [UIImage], view: UIView, imgWidth:CGFloat){
         
         self.thumbnailViews.removeAll()
         var xPos: CGFloat = 0.0
-        var width: CGFloat = 0.0
+        var width: CGFloat = imgWidth
         for image in images{
             DispatchQueue.main.async {
-                if xPos + view.frame.size.height < view.frame.width{
-                    width = view.frame.size.height
-                }else{
-                    width = view.frame.size.width - xPos
-                }
-                
+//                if xPos + view.frame.size.height < view.frame.width{
+//                    width = view.frame.size.height
+//                }else{
+//                    width = view.frame.size.width - xPos
+//                }
+                print(width)
                 let imageView = UIImageView(image: image)
                 imageView.alpha = 0
                 imageView.contentMode = UIViewContentMode.scaleAspectFill
+                
                 imageView.clipsToBounds = true
+                
                 imageView.frame = CGRect(x: xPos,
                                          y: 0.0,
                                          width: width,
-                                         height: view.frame.size.height)
+                                         height: 80)
                 self.thumbnailViews.append(imageView)
                 
                 
@@ -42,7 +44,7 @@ class ABThumbnailsManager: NSObject {
                     imageView.alpha = 1.0
                 })
                 view.sendSubview(toBack: imageView)
-                xPos = xPos + view.frame.size.height
+                xPos = xPos + width
             }
         }
     }
@@ -64,14 +66,15 @@ class ABThumbnailsManager: NSObject {
         
         var thumbnails = [UIImage]()
         var offset: Float64 = 0
+        let numberoOfImages = Int(ceil(Double(UIScreen.main.bounds.width - 30) / Double(duration))) + 1
         let imagesCount = self.thumbnailCount(inView: view)
-        
-        for i in 0..<imagesCount{
+        print(numberoOfImages, duration)
+        for i in 0..<numberoOfImages{
             let thumbnail = ABVideoHelper.thumbnailFromVideo(videoUrl: videoURL,
                                                              time: CMTimeMake(Int64(offset), 1))
-            offset = Float64(i) * (duration / Float64(imagesCount))
+            offset = Float64(i) * (duration / Float64(numberoOfImages))
             thumbnails.append(thumbnail)
         }
-        self.addImagesToView(images: thumbnails, view: view)
+        self.addImagesToView(images: thumbnails, view: view, imgWidth: CGFloat(offset))
     }
 }

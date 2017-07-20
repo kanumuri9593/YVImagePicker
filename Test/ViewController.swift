@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.showsVideo = true
+        picker.showsCustomSelector = false
          let gestureRecognizerOne = UITapGestureRecognizer(target: self, action: #selector(StudentSelected))
         avatar.addGestureRecognizer(gestureRecognizerOne)
         
