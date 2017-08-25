@@ -43,14 +43,14 @@
 		F2A0A0F81F1E7BAC00C2A3AA /* EndIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = F2A0A0EA1F1E7BAC00C2A3AA /* EndIndicator.png */; };
 		F2A0A0F91F1E7BAC00C2A3AA /* ProgressIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = F2A0A0EB1F1E7BAC00C2A3AA /* ProgressIndicator.png */; };
 		F2A0A0FA1F1E7BAC00C2A3AA /* StartIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = F2A0A0EC1F1E7BAC00C2A3AA /* StartIndicator.png */; };
-		F2A0A0FC1F1E7BAC00C2A3AA /* ABBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0EF1F1E7BAC00C2A3AA /* ABBorder.swift */; };
-		F2A0A0FD1F1E7BAC00C2A3AA /* ABEndIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0F01F1E7BAC00C2A3AA /* ABEndIndicator.swift */; };
-		F2A0A0FE1F1E7BAC00C2A3AA /* ABProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0F11F1E7BAC00C2A3AA /* ABProgressIndicator.swift */; };
-		F2A0A0FF1F1E7BAC00C2A3AA /* ABStartIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0F21F1E7BAC00C2A3AA /* ABStartIndicator.swift */; };
-		F2A0A1001F1E7BAC00C2A3AA /* ABThumbnailsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0F31F1E7BAC00C2A3AA /* ABThumbnailsManager.swift */; };
-		F2A0A1011F1E7BAC00C2A3AA /* ABTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0F41F1E7BAC00C2A3AA /* ABTimeView.swift */; };
-		F2A0A1021F1E7BAC00C2A3AA /* ABVideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0F51F1E7BAC00C2A3AA /* ABVideoHelper.swift */; };
-		F2A0A1031F1E7BAC00C2A3AA /* ABVideoRangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0F61F1E7BAC00C2A3AA /* ABVideoRangeSlider.swift */; };
+		F2A0A0FC1F1E7BAC00C2A3AA /* YVBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0EF1F1E7BAC00C2A3AA /* YVBorder.swift */; };
+		F2A0A0FD1F1E7BAC00C2A3AA /* YVEndIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0F01F1E7BAC00C2A3AA /* YVEndIndicator.swift */; };
+		F2A0A0FE1F1E7BAC00C2A3AA /* YVProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0F11F1E7BAC00C2A3AA /* YVProgressIndicator.swift */; };
+		F2A0A0FF1F1E7BAC00C2A3AA /* YVStartIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0F21F1E7BAC00C2A3AA /* YVStartIndicator.swift */; };
+		F2A0A1001F1E7BAC00C2A3AA /* YVThumbnailsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0F31F1E7BAC00C2A3AA /* YVThumbnailsManager.swift */; };
+		F2A0A1011F1E7BAC00C2A3AA /* YVTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0F41F1E7BAC00C2A3AA /* YVTimeView.swift */; };
+		F2A0A1021F1E7BAC00C2A3AA /* YVVideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0F51F1E7BAC00C2A3AA /* YVVideoHelper.swift */; };
+		F2A0A1031F1E7BAC00C2A3AA /* YVVideoRangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A0F61F1E7BAC00C2A3AA /* YVVideoRangeSlider.swift */; };
 		F2A0A1051F1E7F0200C2A3AA /* UIView+Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0A1041F1E7F0200C2A3AA /* UIView+Anchor.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,14 +97,14 @@
 		F2A0A0EA1F1E7BAC00C2A3AA /* EndIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EndIndicator.png; sourceTree = "<group>"; };
 		F2A0A0EB1F1E7BAC00C2A3AA /* ProgressIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProgressIndicator.png; sourceTree = "<group>"; };
 		F2A0A0EC1F1E7BAC00C2A3AA /* StartIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartIndicator.png; sourceTree = "<group>"; };
-		F2A0A0EF1F1E7BAC00C2A3AA /* ABBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ABBorder.swift; path = Classes/ABBorder.swift; sourceTree = "<group>"; };
-		F2A0A0F01F1E7BAC00C2A3AA /* ABEndIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ABEndIndicator.swift; path = Classes/ABEndIndicator.swift; sourceTree = "<group>"; };
-		F2A0A0F11F1E7BAC00C2A3AA /* ABProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ABProgressIndicator.swift; path = Classes/ABProgressIndicator.swift; sourceTree = "<group>"; };
-		F2A0A0F21F1E7BAC00C2A3AA /* ABStartIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ABStartIndicator.swift; path = Classes/ABStartIndicator.swift; sourceTree = "<group>"; };
-		F2A0A0F31F1E7BAC00C2A3AA /* ABThumbnailsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABThumbnailsManager.swift; sourceTree = "<group>"; };
-		F2A0A0F41F1E7BAC00C2A3AA /* ABTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ABTimeView.swift; path = Classes/ABTimeView.swift; sourceTree = "<group>"; };
-		F2A0A0F51F1E7BAC00C2A3AA /* ABVideoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABVideoHelper.swift; sourceTree = "<group>"; };
-		F2A0A0F61F1E7BAC00C2A3AA /* ABVideoRangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABVideoRangeSlider.swift; sourceTree = "<group>"; };
+		F2A0A0EF1F1E7BAC00C2A3AA /* YVBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YVBorder.swift; path = Classes/YVBorder.swift; sourceTree = "<group>"; };
+		F2A0A0F01F1E7BAC00C2A3AA /* YVEndIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YVEndIndicator.swift; path = Classes/YVEndIndicator.swift; sourceTree = "<group>"; };
+		F2A0A0F11F1E7BAC00C2A3AA /* YVProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YVProgressIndicator.swift; path = Classes/YVProgressIndicator.swift; sourceTree = "<group>"; };
+		F2A0A0F21F1E7BAC00C2A3AA /* YVStartIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YVStartIndicator.swift; path = Classes/YVStartIndicator.swift; sourceTree = "<group>"; };
+		F2A0A0F31F1E7BAC00C2A3AA /* YVThumbnailsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YVThumbnailsManager.swift; sourceTree = "<group>"; };
+		F2A0A0F41F1E7BAC00C2A3AA /* YVTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YVTimeView.swift; path = Classes/YVTimeView.swift; sourceTree = "<group>"; };
+		F2A0A0F51F1E7BAC00C2A3AA /* YVVideoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YVVideoHelper.swift; sourceTree = "<group>"; };
+		F2A0A0F61F1E7BAC00C2A3AA /* YVVideoRangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YVVideoRangeSlider.swift; sourceTree = "<group>"; };
 		F2A0A1041F1E7F0200C2A3AA /* UIView+Anchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Anchor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -188,7 +188,7 @@
 			children = (
 				F26FB09E1F1901C000D17889 /* Test */,
 				F26FB0B11F1902A200D17889 /* YVPickerController */,
-				F2A0A0E71F1E7BAC00C2A3AA /* ABVideoRangeSlider */,
+				F2A0A0E71F1E7BAC00C2A3AA /* YVVideoRangeSlider */,
 				F26FB09D1F1901C000D17889 /* Products */,
 				8F2E201E4A00B203012BC723 /* Pods */,
 				F6D4A1EA06663554A08A3ED0 /* Frameworks */,
@@ -245,13 +245,14 @@
 			path = Filters;
 			sourceTree = "<group>";
 		};
-		F2A0A0E71F1E7BAC00C2A3AA /* ABVideoRangeSlider */ = {
+		F2A0A0E71F1E7BAC00C2A3AA /* YVVideoRangeSlider */ = {
 			isa = PBXGroup;
 			children = (
 				F2A0A0ED1F1E7BAC00C2A3AA /* Classes */,
 				F2A0A10E1F1F95BE00C2A3AA /* Views */,
 				F2A0A0E81F1E7BAC00C2A3AA /* Assets */,
 			);
+			name = YVVideoRangeSlider;
 			path = ABVideoRangeSlider;
 			sourceTree = "<group>";
 		};
@@ -269,9 +270,9 @@
 		F2A0A0ED1F1E7BAC00C2A3AA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F2A0A0F61F1E7BAC00C2A3AA /* ABVideoRangeSlider.swift */,
-				F2A0A0F31F1E7BAC00C2A3AA /* ABThumbnailsManager.swift */,
-				F2A0A0F51F1E7BAC00C2A3AA /* ABVideoHelper.swift */,
+				F2A0A0F61F1E7BAC00C2A3AA /* YVVideoRangeSlider.swift */,
+				F2A0A0F31F1E7BAC00C2A3AA /* YVThumbnailsManager.swift */,
+				F2A0A0F51F1E7BAC00C2A3AA /* YVVideoHelper.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -279,11 +280,11 @@
 		F2A0A10E1F1F95BE00C2A3AA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F2A0A0F11F1E7BAC00C2A3AA /* ABProgressIndicator.swift */,
-				F2A0A0F21F1E7BAC00C2A3AA /* ABStartIndicator.swift */,
-				F2A0A0F01F1E7BAC00C2A3AA /* ABEndIndicator.swift */,
-				F2A0A0EF1F1E7BAC00C2A3AA /* ABBorder.swift */,
-				F2A0A0F41F1E7BAC00C2A3AA /* ABTimeView.swift */,
+				F2A0A0F11F1E7BAC00C2A3AA /* YVProgressIndicator.swift */,
+				F2A0A0F21F1E7BAC00C2A3AA /* YVStartIndicator.swift */,
+				F2A0A0F01F1E7BAC00C2A3AA /* YVEndIndicator.swift */,
+				F2A0A0EF1F1E7BAC00C2A3AA /* YVBorder.swift */,
+				F2A0A0F41F1E7BAC00C2A3AA /* YVTimeView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -433,25 +434,25 @@
 				F2A0A0E61F1E7A6200C2A3AA /* YVVideoTrimVC.swift in Sources */,
 				F26FB0E11F1902A200D17889 /* ImageCropViewContainer.swift in Sources */,
 				F26FB0D81F1902A200D17889 /* FSBottomPager.swift in Sources */,
-				F2A0A0FF1F1E7BAC00C2A3AA /* ABStartIndicator.swift in Sources */,
+				F2A0A0FF1F1E7BAC00C2A3AA /* YVStartIndicator.swift in Sources */,
 				F26FB0D21F1902A200D17889 /* FiltersVC.swift in Sources */,
-				F2A0A0FE1F1E7BAC00C2A3AA /* ABProgressIndicator.swift in Sources */,
-				F2A0A1001F1E7BAC00C2A3AA /* ABThumbnailsManager.swift in Sources */,
-				F2A0A1021F1E7BAC00C2A3AA /* ABVideoHelper.swift in Sources */,
+				F2A0A0FE1F1E7BAC00C2A3AA /* YVProgressIndicator.swift in Sources */,
+				F2A0A1001F1E7BAC00C2A3AA /* YVThumbnailsManager.swift in Sources */,
+				F2A0A1021F1E7BAC00C2A3AA /* YVVideoHelper.swift in Sources */,
 				F26FB0D91F1902A200D17889 /* FSCameraVC.swift in Sources */,
 				F26FB0E01F1902A200D17889 /* FusumaVC.swift in Sources */,
 				F26FB0A21F1901C000D17889 /* ViewController.swift in Sources */,
 				F26FB0DC1F1902A200D17889 /* FSGridView.swift in Sources */,
 				F26FB0D11F1902A200D17889 /* FilterPreview.swift in Sources */,
-				F2A0A0FC1F1E7BAC00C2A3AA /* ABBorder.swift in Sources */,
+				F2A0A0FC1F1E7BAC00C2A3AA /* YVBorder.swift in Sources */,
 				F26FB0DD1F1902A200D17889 /* FSHelpers.swift in Sources */,
 				F26FB0D31F1902A200D17889 /* FiltersView.swift in Sources */,
 				F26FB0E21F1902A200D17889 /* PhotoSaver.swift in Sources */,
 				F26FB0DE1F1902A200D17889 /* FSImageCropView.swift in Sources */,
 				F23D99551F19244300BC253D /* AvatarView.swift in Sources */,
-				F2A0A1031F1E7BAC00C2A3AA /* ABVideoRangeSlider.swift in Sources */,
+				F2A0A1031F1E7BAC00C2A3AA /* YVVideoRangeSlider.swift in Sources */,
 				F26FB0DF1F1902A200D17889 /* FSVideoVC.swift in Sources */,
-				F2A0A0FD1F1E7BAC00C2A3AA /* ABEndIndicator.swift in Sources */,
+				F2A0A0FD1F1E7BAC00C2A3AA /* YVEndIndicator.swift in Sources */,
 				F26FB0CF1F1902A200D17889 /* Filter.swift in Sources */,
 				F26FB0D41F1902A200D17889 /* FSAlbumVC.swift in Sources */,
 				F26FB0D01F1902A200D17889 /* FilterCollectionViewCell.swift in Sources */,
@@ -462,7 +463,7 @@
 				F26FB0A01F1901C000D17889 /* AppDelegate.swift in Sources */,
 				F2A0A1051F1E7F0200C2A3AA /* UIView+Anchor.swift in Sources */,
 				F26FB0D71F1902A200D17889 /* FSAlbumViewCell.swift in Sources */,
-				F2A0A1011F1E7BAC00C2A3AA /* ABTimeView.swift in Sources */,
+				F2A0A1011F1E7BAC00C2A3AA /* YVTimeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
